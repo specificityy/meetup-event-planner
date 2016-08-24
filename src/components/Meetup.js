@@ -17,7 +17,7 @@ const Meetup = ({ meetup, onDelete }) => {
 		    <p> When:&nbsp;&nbsp;<strong>{m.date}</strong>&nbsp;&nbsp;&nbsp;&nbsp;At:&nbsp;&nbsp;<strong>{m.time}</strong> </p>
 		  </div>
 		  <div className='panel-footer'>
-			  <Link to={`/edit/${m.id}`} className='btn btn-primary' data-dismiss='modal'> Edit </Link>
+			  <Link to={`/meetup-event-planner/edit/${m.id}`} className='btn btn-primary' data-dismiss='modal'> Edit </Link>
         <button className='btn btn-warning' onClick={() => onDelete(m.id)} > Delete </button>
 		  </div>
 		</div>

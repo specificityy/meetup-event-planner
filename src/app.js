@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, Redirect, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
 import * as localStore from './localStore';
@@ -17,9 +17,10 @@ import EditMeetupModal from './components/EditMeetupModal';
 const store = createStore(combineReducers(reducers), localStore.get());
 const history = syncHistoryWithStore(browserHistory, store);
 
-const routes = (<Route path='/' component={App}>
-	<Route path='/new' component={NewMeetupModal} />
-	<Route path='/edit/:meetupId' component={EditMeetupModal} />
+const routes = (<Route path='/meetup-event-planner' component={App}>
+	<Route path='/meetup-event-planner/new' component={NewMeetupModal} />
+	<Route path='/meetup-event-planner/edit/:meetupId' component={EditMeetupModal} />
+	<Redirect from='/' to='/meetup-event-planner' />
 </Route>);
 
 function run() {

@@ -27943,9 +27943,10 @@ var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHi
 
 var routes = _react2.default.createElement(
 	_reactRouter.Route,
-	{ path: '/', component: _App2.default },
-	_react2.default.createElement(_reactRouter.Route, { path: '/new', component: _NewMeetupModal2.default }),
-	_react2.default.createElement(_reactRouter.Route, { path: '/edit/:meetupId', component: _EditMeetupModal2.default })
+	{ path: '/meetup-event-planner', component: _App2.default },
+	_react2.default.createElement(_reactRouter.Route, { path: '/meetup-event-planner/new', component: _NewMeetupModal2.default }),
+	_react2.default.createElement(_reactRouter.Route, { path: '/meetup-event-planner/edit/:meetupId', component: _EditMeetupModal2.default }),
+	_react2.default.createElement(_reactRouter.Redirect, { from: '/', to: '/meetup-event-planner' })
 );
 
 function run() {
@@ -28135,7 +28136,7 @@ var Meetup = function Meetup(_ref) {
 				{ className: 'panel-footer' },
 				_react2.default.createElement(
 					_reactRouter.Link,
-					{ to: '/edit/' + m.id, className: 'btn btn-primary', 'data-dismiss': 'modal' },
+					{ to: '/meetup-event-planner/edit/' + m.id, className: 'btn btn-primary', 'data-dismiss': 'modal' },
 					' Edit '
 				),
 				_react2.default.createElement(
@@ -28183,7 +28184,6 @@ var MeetupModal = _react2.default.createClass({
 			var dt = new Date();
 			meetup.date = dt.getFullYear() + '-' + ('0' + (dt.getMonth() + 1)).slice(-2) + '-' + ('0' + dt.getDate()).slice(-2);
 			meetup.time = ('0' + dt.getHours()).slice(-2) + ':00';
-			console.log(meetup.date);
 		}
 
 		return _react2.default.createElement(
@@ -28329,12 +28329,12 @@ var MeetupModal = _react2.default.createClass({
 		});
 
 		var route = props.meetup ? '/edit/' + props.meetup.id + '/' : '/new';
-		_reactRouter.browserHistory.push(route);
+		_reactRouter.browserHistory.push('/meetup-event-planner' + route);
 		_reactRouter.browserHistory.push('/'); // navigates back home
 	},
 	onDelete: function onDelete() {
 		this.props.onDelete(this.props.meetup.id);
-		_reactRouter.browserHistory.push('/edit/' + this.props.meetup.id);
+		_reactRouter.browserHistory.push('/meetup-event-planner/edit/' + this.props.meetup.id);
 	}
 });
 
@@ -28444,7 +28444,7 @@ var Navbar = function Navbar(_ref) {
 			{ className: 'container' },
 			_react2.default.createElement(
 				_reactRouter.Link,
-				{ to: '/new', className: 'btn btn-default navbar-btn' },
+				{ to: '/meetup-event-planner/new', className: 'btn btn-default navbar-btn' },
 				' ✚ New Meetup '
 			),
 			_react2.default.createElement(

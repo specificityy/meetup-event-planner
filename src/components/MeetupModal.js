@@ -12,7 +12,6 @@ const MeetupModal = React.createClass({
 			let dt = new Date;
 			meetup.date = `${dt.getFullYear()}-${('0' + (dt.getMonth() + 1)).slice(-2)}-${('0'+dt.getDate()).slice(-2)}`;
 			meetup.time = `${('0' + dt.getHours()).slice(-2)}:00`;
-		console.log(meetup.date);
 		}
 
 		return (<div className='modal' style={{display: 'block'}}>
@@ -87,13 +86,13 @@ const MeetupModal = React.createClass({
 		});
 
 		let route = props.meetup ? `/edit/${props.meetup.id}/` : '/new';
-		browserHistory.push(route);
+		browserHistory.push('/meetup-event-planner' + route);
 		browserHistory.push('/'); // navigates back home
 	},
 
 	onDelete() {
 		this.props.onDelete(this.props.meetup.id);
-		browserHistory.push(`/edit/${this.props.meetup.id}`);
+		browserHistory.push(`/meetup-event-planner/edit/${this.props.meetup.id}`);
 	}
 });
 
