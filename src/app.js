@@ -2,14 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
+import { Router, Route, browserHistory } from 'react-router';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
 import * as localStore from './localStore';
-import * as reducers from './reducers';
 import * as actions from './actions';
+import * as reducers from './reducers';
+reducers.routing = routerReducer;
 
 import App from './components/App';
+import NewMeetupModal from './components/NewMeetupModal';
+import EditMeetupModal from './components/EditMeetupModal';
 
 const store = createStore(combineReducers(reducers), localStore.get());
+const history = syncHistoryWithStore(browserHistory, store);
+
+const routes = (<Route path='/' component={App}>
+	<Route path='/new' component={NewMeetupModal} />
+	<Route path='/edit/:meetupId' component={EditMeetupModal} />
+</Route>);
 
 function run() {
 	let state	= store.getState();
@@ -17,26 +28,12 @@ function run() {
 	localStore.set(state, ['meetups']);
 
 	ReactDOM.render((<Provider store={store}>
-		<App>
-		
-		</App>
+		<Router history={history}>
+			{routes}
+		</Router>
 	</Provider>), document.getElementById('root'));
-
-	console.log(state);
 }
 
 run();
 
 store.subscribe(run);
-
-let count = 0;
-
-window.add = () =>
-	store.dispatch(actions.addMeetup({
-		name: 'meetup ' + (++count),
-		desc: 'sample meetup',
-		capacity: 20,
-		location: 'Roker Park',
-		start: 'Friday',
-		end: 'Saturday'
-	}));

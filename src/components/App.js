@@ -1,18 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import VisibleMeetups from './VisibleMeetups';
+import MeetupsList from './MeetupsList';
 import Navbar from './Navbar';
-
-const mapStateToProps = (props/*, { params: { deckId } }*/) => ({
-	// deckId
-});
-
 
 const App = ({ deckId, children }) => {
   return (<div>
   	<Navbar />
-  	<VisibleMeetups />
+  	<MeetupsList />
+  	{children}
   </div>);
 };
 
-export default connect(mapStateToProps)(App);
+export default App;
