@@ -1,2 +1,6 @@
 node_modules
 public/bundle.js
+
+logs
+*.log
+npm-debug.log*
