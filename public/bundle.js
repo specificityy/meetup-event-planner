@@ -28448,7 +28448,7 @@ var Navbar = function Navbar(_ref) {
 				' ✚ New Meetup '
 			),
 			_react2.default.createElement(
-				'form',
+				'div',
 				{ className: 'navbar-form navbar-right', role: 'search' },
 				_react2.default.createElement(
 					'div',
