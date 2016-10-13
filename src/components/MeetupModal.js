@@ -74,20 +74,27 @@ const MeetupModal = React.createClass({
 	onSave() {
 		let refs = this.refs,
 				props = this.props,
-				findNode = ReactDOM.findDOMNode;
+				findNode = ReactDOM.findDOMNode,
+				meetup = props.meetup,
+				route = '/new',
+				toSave = {
+					name: findNode(refs.name).value,
+					desc: findNode(refs.desc).value,
+					capacity: findNode(refs.capacity).value,
+					location: findNode(refs.location).value,
+					date: findNode(refs.date).value,
+					time: findNode(refs.time).value
+				};
 
-		props.onSave({
-			name: findNode(refs.name).value,
-			desc: findNode(refs.desc).value,
-			capacity: findNode(refs.capacity).value,
-			location: findNode(refs.location).value,
-			date: findNode(refs.date).value,
-			time: findNode(refs.time).value
-		});
+		if (meetup) {
+			toSave.id = meetup.id;
+			route = `/edit/${meetup.id}/`;
+		}
 
-		let route = props.meetup ? `/edit/${props.meetup.id}/` : '/new';
 		browserHistory.push('/meetup-event-planner' + route);
 		browserHistory.push('/'); // navigates back home
+		
+		props.onSave(toSave);
 	},
 
 	onDelete() {

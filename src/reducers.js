@@ -14,7 +14,7 @@ export const meetups = (state, action) => {
 			let updated = action.data;
 			return state.map(m => m.id !== updated.id ?
 				m :
-				Object.assign({}, m, m.updated));
+				Object.assign({}, m, updated));
 
 		case 'DELETE_MEETUP':
 			return state.filter(m => m.id !== action.data);
