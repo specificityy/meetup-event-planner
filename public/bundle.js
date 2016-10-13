@@ -28022,7 +28022,6 @@ var _Navbar2 = _interopRequireDefault(_Navbar);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App(_ref) {
-  var deckId = _ref.deckId;
   var children = _ref.children;
 
   return _react2.default.createElement(
@@ -28404,7 +28403,7 @@ var _actions = require('../actions');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var matches = function matches(filter, meetup) {
-	return (0, _fuzzysearch2.default)(filter, meetup.name) || (0, _fuzzysearch2.default)(filter, meetup.desc) || (0, _fuzzysearch2.default)(filter, meetup.location) || (0, _fuzzysearch2.default)(filter, meetup.date) || (0, _fuzzysearch2.default)(filter, meetup.time);
+	return (0, _fuzzysearch2.default)(filter, meetup.name.toLowerCase()) || (0, _fuzzysearch2.default)(filter, meetup.desc.toLowerCase()) || (0, _fuzzysearch2.default)(filter, meetup.location.toLowerCase()) || (0, _fuzzysearch2.default)(filter, meetup.date.toLowerCase()) || (0, _fuzzysearch2.default)(filter, meetup.time.toLowerCase());
 };
 
 var mapStateToProps = function mapStateToProps(_ref) {
@@ -28412,7 +28411,7 @@ var mapStateToProps = function mapStateToProps(_ref) {
 	var meetupFilter = _ref.meetupFilter;
 	return {
 		meetups: meetups.filter(function (m) {
-			return matches(meetupFilter, m);
+			return matches(meetupFilter.toLowerCase(), m);
 		})
 	};
 };

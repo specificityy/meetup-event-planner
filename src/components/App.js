@@ -2,7 +2,7 @@ import React from 'react';
 import MeetupsList from './MeetupsList';
 import Navbar from './Navbar';
 
-const App = ({ deckId, children }) => {
+const App = ({ children }) => {
   return (<div>
   	<Navbar />
   	<MeetupsList />

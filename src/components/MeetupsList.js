@@ -5,14 +5,14 @@ import Meetup from './Meetup';
 import { deleteMeetup } from '../actions';
 
 const matches = (filter, meetup) =>
-	fuzzysearch(filter, meetup.name) ||
-	fuzzysearch(filter, meetup.desc) ||
-	fuzzysearch(filter, meetup.location) ||
-	fuzzysearch(filter, meetup.date) ||
-	fuzzysearch(filter, meetup.time);
+	fuzzysearch(filter, meetup.name.toLowerCase()) ||
+	fuzzysearch(filter, meetup.desc.toLowerCase()) ||
+	fuzzysearch(filter, meetup.location.toLowerCase()) ||
+	fuzzysearch(filter, meetup.date.toLowerCase()) ||
+	fuzzysearch(filter, meetup.time.toLowerCase());
 
 const mapStateToProps = ({ meetups, meetupFilter }) => ({
-	meetups: meetups.filter(m => matches(meetupFilter, m))
+	meetups: meetups.filter(m => matches(meetupFilter.toLowerCase(), m))
 });
 
 const mapDispatchToProps = dispatch => ({
