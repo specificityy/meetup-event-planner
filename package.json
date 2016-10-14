@@ -30,6 +30,7 @@
     "babel-register": "^6.16.3",
     "enzyme": "^2.4.1",
     "faucet": "0.0.1",
+    "jsdom": "^9.6.0",
     "react-addons-test-utils": "^15.3.2",
     "tape": "^4.6.2",
     "tape-watch": "^2.2.3"

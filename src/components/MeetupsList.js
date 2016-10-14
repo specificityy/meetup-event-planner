@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
 	onDelete: id => dispatch(deleteMeetup(id))
 })
 
-const Meetups = ({ meetups, onDelete }) => {
+export const MeetupsList = ({ meetups, onDelete }) => {
 	return (<div className='container'>
 		<div className='row'>
 			{meetups.map(m => <Meetup meetup={m} onDelete={onDelete} key={m.id} />)}
@@ -27,4 +27,4 @@ const Meetups = ({ meetups, onDelete }) => {
 	</div>);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Meetups);
+export default connect(mapStateToProps, mapDispatchToProps)(MeetupsList);

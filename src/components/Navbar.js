@@ -7,7 +7,7 @@ const mapDispatchToProps = dispatch => ({
 	onFilter: query => dispatch(filterMeetups(query))
 });
 
-const Navbar = ({ onFilter }) => {
+export const Navbar = ({ onFilter }) => {
 	return (<nav className='navbar navbar-default'>
 	  <div className='container'>
 	    <Link to='/meetup-event-planner/new' className='btn btn-default navbar-btn'> ✚ New Meetup </Link>

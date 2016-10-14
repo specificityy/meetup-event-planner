@@ -7,9 +7,6 @@ export const meetups = (state, action) => {
 
 			return state.concat([newMeetup]);
 
-		case 'VIEW_MEETUP':
-			return action.data || {};
-
 		case 'EDIT_MEETUP':
 			let updated = action.data;
 			return state.map(m => m.id !== updated.id ?

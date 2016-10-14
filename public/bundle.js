@@ -27907,9 +27907,6 @@ Object.defineProperty(exports, "__esModule", {
 var addMeetup = exports.addMeetup = function addMeetup(meetup) {
   return { type: 'ADD_MEETUP', data: meetup };
 };
-var viewMeetup = exports.viewMeetup = function viewMeetup(meetup) {
-  return { type: 'VIEW_MEETUP', data: meetup };
-};
 var editMeetup = exports.editMeetup = function editMeetup(meetup) {
   return { type: 'EDIT_MEETUP', data: meetup };
 };
@@ -28383,6 +28380,7 @@ exports.default = MeetupModal;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+exports.MeetupsList = undefined;
 
 var _react = require('react');
 
@@ -28424,7 +28422,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	};
 };
 
-var Meetups = function Meetups(_ref2) {
+var MeetupsList = exports.MeetupsList = function MeetupsList(_ref2) {
 	var meetups = _ref2.meetups;
 	var onDelete = _ref2.onDelete;
 
@@ -28441,7 +28439,7 @@ var Meetups = function Meetups(_ref2) {
 	);
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Meetups);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(MeetupsList);
 
 },{"../actions":268,"./Meetup":272,"fuzzysearch":1,"react":252,"react-redux":5}],275:[function(require,module,exports){
 'use strict';
@@ -28449,6 +28447,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+exports.Navbar = undefined;
 
 var _react = require('react');
 
@@ -28470,7 +28469,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	};
 };
 
-var Navbar = function Navbar(_ref) {
+var Navbar = exports.Navbar = function Navbar(_ref) {
 	var onFilter = _ref.onFilter;
 
 	return _react2.default.createElement(
@@ -28569,11 +28568,6 @@ var meetups = exports.meetups = function meetups(state, action) {
 
 				return {
 					v: state.concat([newMeetup])
-				};
-
-			case 'VIEW_MEETUP':
-				return {
-					v: action.data || {}
 				};
 
 			case 'EDIT_MEETUP':
